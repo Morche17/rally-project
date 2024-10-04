@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Alimentos - Productos</title>
+    <title>Tienda de Alimentos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,6 +17,10 @@
             color: white;
             text-align: center;
             padding: 1em 0;
+        }
+
+        header h1 {
+            margin: 0;
         }
 
         nav {
@@ -51,9 +55,8 @@
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 20px;
-            width: calc(33.33% - 20px);
+            width: 30%;
             text-align: center;
-            box-sizing: border-box;
         }
 
         .product img {
@@ -72,23 +75,12 @@
             margin: 10px 0;
         }
 
-        .product input {
-            width: 60px;
-            padding: 5px;
-            margin-top: 10px;
-            text-align: center;
-        }
-
         .product button {
             padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
-            margin-top: 10px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .product button:hover {
@@ -102,7 +94,9 @@
             background-color: white;
             border: 1px solid #ddd;
             padding: 10px;
-            width: 200px;
+            width: 250px;
+            max-height: 300px;
+            overflow-y: auto; /* Permite desplazamiento cuando el carrito crezca */
         }
 
         #cart h2 {
@@ -117,6 +111,12 @@
 
         #cart ul li {
             margin: 5px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #cart ul li span {
+            margin-right: 10px;
         }
 
         #cart button {
@@ -126,6 +126,7 @@
             border: none;
             cursor: pointer;
             width: 100%;
+            margin-top: 10px;
         }
 
         footer {
@@ -137,6 +138,14 @@
             width: 100%;
             bottom: 0;
         }
+
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -145,7 +154,6 @@
     <h1>Tienda de Alimentos</h1>
 </header>
 
-<!-- Menú de navegación -->
 <nav>
     <a href="home.html">Inicio</a>
     <a href="productos.html">Productos</a>
@@ -153,900 +161,89 @@
     <a href="#">Contacto</a>
 </nav>
 
-<!-- Sección de productos -->
 <div class="container">
-    <!-- Producto 1 -->
     <div class="product">
         <img src="https://via.placeholder.com/300x200" alt="Frutas">
         <h2>Frutas Frescas</h2>
         <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
+        <button onclick="addToCart('Frutas Frescas', 10.00)">Agregar al Carrito</button>
     </div>
 
-    <!-- Producto 2 -->
     <div class="product">
         <img src="https://via.placeholder.com/300x200" alt="Verduras">
         <h2>Verduras Orgánicas</h2>
         <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
+        <button onclick="addToCart('Verduras Orgánicas', 8.00)">Agregar al Carrito</button>
     </div>
 
-    <!-- Producto 3 -->
     <div class="product">
         <img src="https://via.placeholder.com/300x200" alt="Carnes">
         <h2>Carnes de Primera</h2>
         <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
+        <button onclick="addToCart('Carnes de Primera', 20.00)">Agregar al Carrito</button>
     </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    <!-- Producto 1 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Frutas">
-        <h2>Frutas Frescas</h2>
-        <p>$10.00 por kilo</p>
-        <input type="number" id="cantidad-frutas" min="1" value="1">
-        <button onclick="addToCart('Frutas Frescas', 10.00, 'cantidad-frutas')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 2 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Verduras">
-        <h2>Verduras Orgánicas</h2>
-        <p>$8.00 por kilo</p>
-        <input type="number" id="cantidad-verduras" min="1" value="1">
-        <button onclick="addToCart('Verduras Orgánicas', 8.00, 'cantidad-verduras')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 3 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Carnes">
-        <h2>Carnes de Primera</h2>
-        <p>$20.00 por kilo</p>
-        <input type="number" id="cantidad-carnes" min="1" value="1">
-        <button onclick="addToCart('Carnes de Primera', 20.00, 'cantidad-carnes')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 4 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
-        <h2>Lácteos Frescos</h2>
-        <p>$15.00 por litro</p>
-        <input type="number" id="cantidad-lacteos" min="1" value="1">
-        <button onclick="addToCart('Lácteos Frescos', 15.00, 'cantidad-lacteos')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 5 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pan">
-        <h2>Pan Artesanal</h2>
-        <p>$3.00 por pieza</p>
-        <input type="number" id="cantidad-pan" min="1" value="1">
-        <button onclick="addToCart('Pan Artesanal', 3.00, 'cantidad-pan')">Agregar al Carrito</button>
-    </div>
-
-    <!-- Producto 6 -->
-    <div class="product">
-        <img src="https://via.placeholder.com/300x200" alt="Pescado">
-        <h2>Pescado Fresco</h2>
-        <p>$25.00 por kilo</p>
-        <input type="number" id="cantidad-pescado" min="1" value="1">
-        <button onclick="addToCart('Pescado Fresco', 25.00, 'cantidad-pescado')">Agregar al Carrito</button>
-    </div>
-    
 </div>
 
-<!-- Carrito de compras -->
 <div id="cart">
     <h2>Carrito</h2>
-    <ul id="cart-items"></ul>
-    <button onclick="finalizarCompra()">Finalizar compra</button>
+    <ul id="cart-items">
+        <!-- Productos del carrito -->
+    </ul>
+    <p><strong>Total:</strong> $<span id="cart-total">0.00</span></p>
+    <button onclick="checkout()">Comprar</button>
 </div>
 
 <footer>
-    <p>&copy; 2024 Tienda de Alimentos. Todos los derechos reservados.</p>
+    <p>© 2024 Tienda de Alimentos - Todos los derechos reservados</p>
 </footer>
 
 <script>
-    const cartItems = [];
+    let cart = [];
 
-    function addToCart(nombre, precio, cantidadId) {
-        const cantidad = parseInt(document.getElementById(cantidadId).value);
-        const item = { nombre, precio, cantidad };
-        cartItems.push(item);
-        mostrarCarrito();
+    function addToCart(product, price) {
+        cart.push({ product, price });
+        displayCart();
     }
 
-    function mostrarCarrito() {
-        const cartItemsContainer = document.getElementById('cart-items');
-        cartItemsContainer.innerHTML = ''; // Limpiar el carrito
-        cartItems.forEach(item => {
+    function removeFromCart(index) {
+        cart.splice(index, 1); // Elimina el producto en el índice dado
+        displayCart();
+    }
+
+    function displayCart() {
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        cartItems.innerHTML = ''; // Limpia la lista actual del carrito
+        let total = 0;
+
+        cart.forEach((item, index) => {
             const li = document.createElement('li');
-            li.textContent = `${item.nombre} - ${item.cantidad} x $${item.precio}`;
-            cartItemsContainer.appendChild(li);
+            const itemInfo = document.createElement('span');
+            itemInfo.textContent = `${item.product} - $${item.price.toFixed(2)}`;
+            
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Eliminar';
+            removeButton.className = 'remove-btn';
+            removeButton.onclick = () => removeFromCart(index);
+
+            li.appendChild(itemInfo);
+            li.appendChild(removeButton);
+            cartItems.appendChild(li);
+
+            total += item.price; // Suma el precio al total
         });
+
+        cartTotal.textContent = total.toFixed(2);
     }
 
-    function finalizarCompra() {
-        if (cartItems.length === 0) {
-            alert('El carrito está vacío.');
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Tu carrito está vacío.');
             return;
         }
-        let total = 0;
-        cartItems.forEach(item => {
-            total += item.precio * item.cantidad;
-        });
-        alert(`Compra finalizada. Total: $${total.toFixed(2)}`);
+        alert('Gracias por tu compra!');
+        cart = []; // Vacía el carrito después de la compra
+        displayCart(); // Actualiza la vista del carrito vacío
     }
 </script>
 
