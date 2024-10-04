@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Alimentos - Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Tipo de letra */
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Color de fondo */
+        }
+
+        header {
+            background-color: #4CAF50; /* Fondo verde */
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        nav {
+            background-color: #333; /* Fondo del menú de navegación */
+            overflow: hidden; /* Evitar que el contenido sobresalga */
+        }
+
+        nav a {
+            float: left; /* Alinear los enlaces a la izquierda */
+            display: block; /* Mostrar como bloques */
+            color: white; /* Color de texto */
+            text-align: center;
+            padding: 14px 16px; /* Espaciado del enlace */
+            text-decoration: none; /* Quitar subrayado */
+        }
+
+        nav a:hover {
+            background-color: #ddd; /* Color de fondo al pasar el ratón */
+            color: black; /* Color de texto al pasar el ratón */
+        }
+
+        .container {
+            width: 80%; /* Ancho del contenedor de productos */
+            margin: 20px auto; /* Centrar el contenedor */
+            display: flex; /* Flexbox para productos */
+            justify-content: space-between; /* Espaciado entre productos */
+            flex-wrap: wrap; /* Permitir que los productos se ajusten */
+        }
+
+        .product {
+            background-color: white; /* Fondo blanco para productos */
+            border: 1px solid #ddd; /* Borde gris claro */
+            padding: 10px; /* Espaciado interno */
+            margin-bottom: 20px; /* Espaciado inferior */
+            width: 30%; /* Ancho de cada tarjeta de producto */
+            text-align: center; /* Centrar texto */
+        }
+
+        .product img {
+            width: 100%; /* Imagen ocupa el ancho completo */
+            height: 200px; /* Altura fija de la imagen */
+            object-fit: cover; /* Ajuste de imagen */
+        }
+
+        .product h2 {
+            font-size: 1.2em; /* Tamaño de fuente */
+            margin: 10px 0; /* Espaciado */
+        }
+
+        .product p {
+            font-size: 1em; /* Tamaño de fuente para el precio */
+            margin: 10px 0; /* Espaciado */
+        }
+
+        .product button {
+            padding: 10px 20px; /* Espaciado del botón */
+            background-color: #4CAF50; /* Fondo verde del botón */
+            color: white; /* Color de texto del botón */
+            border: none; /* Sin borde */
+            cursor: pointer; /* Cambiar cursor al pasar */
+        }
+
+        .product button:hover {
+            background-color: #45a049; /* Color al pasar el ratón */
+        }
+
+        #cart {
+            position: fixed; /* Posición fija del carrito */
+            right: 0; /* Alineado a la derecha */
+            top: 100px; /* Distancia desde la parte superior */
+            background-color: white; /* Fondo blanco */
+            border: 1px solid #ddd; /* Borde gris claro */
+            padding: 10px; /* Espaciado interno */
+            width: 200px; /* Ancho del carrito */
+        }
+
+        #cart h2 {
+            font-size: 1.5em; /* Tamaño de fuente del título del carrito */
+            margin-bottom: 10px; /* Espaciado inferior */
+        }
+
+        #cart ul {
+            list-style: none; /* Sin estilo de lista */
+            padding: 0; /* Sin espaciado */
+        }
+
+        #cart ul li {
+            margin: 5px 0; /* Espaciado de elementos de lista */
+        }
+
+        #cart button {
+            background-color: #4CAF50; /* Fondo verde del botón de compra */
+            color: white; /* Color de texto */
+            padding: 10px; /* Espaciado */
+            border: none; /* Sin borde */
+            cursor: pointer; /* Cambiar cursor al pasar */
+            width: 100%; /* Botón ocupa el ancho completo */
+        }
+
+        footer {
+            text-align: center; /* Centrar texto del pie */
+            padding: 20px; /* Espaciado */
+            background-color: #333; /* Fondo gris oscuro */
+            color: white; /* Color de texto */
+            position: fixed; /* Posición fija */
+            width: 100%; /* Ancho completo */
+            bottom: 0; /* En la parte inferior */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tienda de Alimentos</h1>
+</header>
+
+<!-- Menú de navegación -->
+<nav>
+    <a href="home.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="#">Ofertas</a>
+    <a href="#">Contacto</a>
+</nav>
+
+<!-- Sección de productos -->
+<div class="container">
+    <!-- Producto 1 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <button onclick="addToCart('Frutas Frescas', 10.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <button onclick="addToCart('Verduras Orgánicas', 8.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Carnes">
+        <h2>Carnes de Primera</h2>
+        <p>$20.00 por kilo</p>
+        <button onclick="addToCart('Carnes de Primera', 20.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 4 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Lácteos">
+        <h2>Lácteos Frescos</h2>
+        <p>$15.00 por litro</p>
+        <button onclick="addToCart('Lácteos Frescos', 15.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 5 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Pan">
+        <h2>Pan Artesanal</h2>
+        <p>$3.00 por pieza</p>
+        <button onclick="addToCart('Pan Artesanal', 3.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 6 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Pescado">
+        <h2>Pescado Fresco</h2>
+        <p>$25.00 por kilo</p>
+        <button onclick="addToCart('Pescado Fresco', 25.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 7 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Arroz">
+        <h2>Arroz Integral</h2>
+        <p>$5.00 por kilo</p>
+        <button onclick="addToCart('Arroz Integral', 5.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 8 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Frutos Secos">
+        <h2>Frutos Secos</h2>
+        <p>$12.00 por kilo</p>
+        <button onclick="addToCart('Frutos Secos', 12.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 9 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Aceite de Oliva">
+        <h2>Aceite de Oliva</h2>
+        <p>$30.00 por litro</p>
+        <button onclick="addToCart('Aceite de Oliva', 30.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 10 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Especias">
+        <h2>Especias Naturales</h2>
+        <p>$7.00 por paquete</p>
+        <button onclick="addToCart('Especias Naturales', 7.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 11 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Cereal">
+        <h2>Cereal Integral</h2>
+        <p>$4.00 por caja</p>
+        <button onclick="addToCart('Cereal Integral', 4.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 12 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Té">
+        <h2>Té Verde</h2>
+        <p>$5.00 por caja</p>
+        <button onclick="addToCart('Té Verde', 5.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 13 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Café">
+        <h2>Café Orgánico</h2>
+        <p>$15.00 por paquete</p>
+        <button onclick="addToCart('Café Orgánico', 15.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 14 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Salsas">
+        <h2>Salsas Caseras</h2>
+        <p>$10.00 por frasco</p>
+        <button onclick="addToCart('Salsas Caseras', 10.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 15 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Jugos Naturales">
+        <h2>Jugos Naturales</h2>
+        <p>$8.00 por litro</p>
+        <button onclick="addToCart('Jugos Naturales', 8.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 16 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Snacks Saludables">
+        <h2>Snacks Saludables</h2>
+        <p>$5.00 por paquete</p>
+        <button onclick="addToCart('Snacks Saludables', 5.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 17 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Pasta Integral">
+        <h2>Pasta Integral</h2>
+        <p>$6.00 por paquete</p>
+        <button onclick="addToCart('Pasta Integral', 6.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 18 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Miel">
+        <h2>Miel Natural</h2>
+        <p>$12.00 por frasco</p>
+        <button onclick="addToCart('Miel Natural', 12.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 19 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Batidos">
+        <h2>Batidos Saludables</h2>
+        <p>$9.00 por botella</p>
+        <button onclick="addToCart('Batidos Saludables', 9.00)">Agregar al Carrito</button>
+    </div>
+
+    <!-- Producto 20 -->
+    <div class="product">
+        <img src="https://via.placeholder.com/300x200" alt="Galletas">
+        <h2>Galletas Caseras</h2>
+        <p>$5.00 por paquete</p>
+        <button onclick="addToCart('Galletas Caseras', 5.00)">Agregar al Carrito</button>
+    </div>
+</div>
+
+<!-- Carrito de compras -->
+<div id="cart">
+    <h2>Carrito</h2>
+    <ul id="cart-items">
+        <!-- Aquí se mostrarán los artículos del carrito -->
+    </ul>
+    <p><strong>Total:</strong> $<span id="cart-total">0.00</span></p>
+    <button onclick="checkout()">Comprar</button>
+</div>
+
+<!-- Pie de página -->
+<footer>
+    <p>© 2024 Tienda de Alimentos - Todos los derechos reservados</p>
+</footer>
+
+<script>
+    // Arreglo para almacenar los productos del carrito
+    let cart = [];
+
+    // Función para agregar productos al carrito
+    function addToCart(product, price) {
+        cart.push({ product, price }); // Agregar producto al carrito
+        displayCart(); // Mostrar carrito actualizado
+    }
+
+    // Función para mostrar los productos en el carrito
+    function displayCart() {
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        cartItems.innerHTML = ''; // Limpiar la lista actual del carrito
+        let total = 0;
+
+        // Recorre los productos en el carrito y los muestra
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.product} - $${item.price.toFixed(2)}`; // Texto del producto
+            cartItems.appendChild(li); // Agregar el producto al HTML
+            total += item.price; // Calcular el total
+        });
+
+        // Actualizar el total en el carrito
+        cartTotal.textContent = total.toFixed(2);
+    }
+
+    // Función para finalizar la compra
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Tu carrito está vacío.'); // Si no hay productos en el carrito
+            return;
+        }
+        alert('Gracias por tu compra!');
+        cart = []; // Vaciar el carrito después de la compra
+        displayCart(); // Actualizar la vista del carrito vacío
+    }
+</script>
+
+</body>
+</html>
