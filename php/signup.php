@@ -1,10 +1,7 @@
 <?php
-// Incluir el archivo de configuración de la base de datos
-include 'connect.php';
+include 'config.php'; // Archivo de configuración de la base de datos
 
-// Verificar si el formulario ha sido enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recoger los datos del formulario
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -15,15 +12,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Preparar la consulta para insertar el usuario en la base de datos
         $sql = "INSERT INTO usuarios (username, password) VALUES (?, ?)";
-        
-        // Preparar la sentencia
+
         if ($stmt = $conn->prepare($sql)) {
             // Vincular los parámetros
             $stmt->bind_param("ss", $username, $hashed_password);
-            
+
             // Ejecutar la consulta
             if ($stmt->execute()) {
-                echo "Usuario registrado exitosamente.";
+                // Redirigir al index.html después del registro exitoso
+                header("Location: index.html");
+                exit();
             } else {
                 echo "Error: " . $stmt->error;
             }
