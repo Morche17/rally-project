@@ -1,3 +1,2 @@
 # rally-project
-Aquí vamos a almacenar y monitorear el proyecto de el rally latinoamericano 2024
-"Que la mujer aprenda sin protestar y con gran respeto. No consiento que la mujer enseñe ni domine al marido, sino que debe comportarse con discrección. Pues primero fue formado Adán, y después Eva. Y no fue Adán el que se dejó engañar, sino la mujer que, seducida, incurrió en la transgresión. Se salvará, sin embargo, por su condición de madre, siempre que persevere con modestia en la fe, el amor y la santidad."
+Aquí vamos a almacenar y monitorear el proyecto de el rally latinoamericano 2024.
