@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { max-width: 300px; margin: auto; padding: 1em; background: #f4f4f4; }
+        input { margin-bottom: 1em; padding: 0.5em; width: 100%; }
+        button { padding: 0.7em; width: 100%; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Iniciar Sesión</button>
+        <div id="error" class="error"></div>
+    </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+    
+            // Validaciones básicas de cliente
+            if (username === '' || password === '') {
+                errorDiv.textContent = 'Por favor, completa todos los campos.';
+                return;
+            }
+    
+            // Enviar datos con AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'login.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    
+            xhr.onload = function() {
+                if (this.status === 200) {
+                    if (this.responseText === 'success') {
+                        // Redirigir a index.html si la respuesta es exitosa
+                        window.location.href = 'index.html';
+                    } else {
+                        errorDiv.textContent = this.responseText; // Mostrar mensaje de error
+                    }
+                }
+            };
+    
+            xhr.send(`username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+        });
+    </script>    
+</body>
+</html>
