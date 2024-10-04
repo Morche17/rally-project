@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "password";
-$dbname = "login";
+$password = "adamlolxd12";
+$dbname = "TiendaVirtual";
 
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
