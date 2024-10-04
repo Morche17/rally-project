@@ -5,14 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Usuario</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        form { max-width: 300px; margin: auto; padding: 1em; background: #f4f4f4; }
-        input { margin-bottom: 1em; padding: 0.5em; width: 100%; }
-        button { padding: 0.7em; width: 100%; }
-        .error { color: red; }
+        body { 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Estilos para el banner */
+        .banner {
+            background-color: #4CAF50; /* Color verde del banner */
+            color: white; /* Color del texto en el banner */
+            padding: 20px; /* Espacio interno del banner */
+            text-align: center; /* Centrar el texto */
+            font-size: 24px; /* Tamaño de fuente del texto */
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+            color: #333; /* Color del título */
+        }
+
+        form {
+            max-width: 300px;
+            margin: 50px auto; /* Centra el formulario horizontalmente y agrega margen superior */
+            padding: 1em;
+            background: #fff; /* Fondo blanco del formulario */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra para el formulario */
+        }
+
+        input {
+            margin-bottom: 1em;
+            padding: 0.5em;
+            width: 100%;
+            border: 1px solid #ccc; /* Borde gris claro para los inputs */
+            border-radius: 4px; /* Bordes redondeados */
+        }
+
+        button {
+            padding: 0.7em;
+            width: 100%;
+            background-color: #4CAF50; /* Color verde para el botón */
+            color: white; /* Color del texto del botón */
+            border: none; /* Sin borde */
+            border-radius: 5px; /* Bordes redondeados para el botón */
+            cursor: pointer; /* Cambia el cursor al pasar por encima */
+        }
+
+        button:hover {
+            background-color: #45a049; /* Color del botón al pasar el mouse */
+        }
+
+        .error {
+            color: red; /* Color rojo para mensajes de error */
+        }
     </style>
 </head>
 <body>
+
+    <!-- Banner con el texto "Tienda de Alimentos" -->
+    <div class="banner">
+        Tienda de Alimentos
+    </div>
+
+    <!-- Título y formulario de registro -->
     <h2>Registrar Usuario</h2>
     <form action="php/signup.php" method="POST">
         <label for="username">Nombre de Usuario:</label>
