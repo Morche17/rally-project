@@ -25,9 +25,21 @@
 </head>
 <body>
     <h1>Generador de Códigos QR</h1>
-    <p>Introduce el texto o URL para generar un código QR:</p>
-    <input type="text" id="input-text" placeholder="Escribe algo...">
-    <button onclick="generateQRCode()">Generar QR</button>
+    <p>Introduce la fecha de caducidad y el peso del producto para generar un código QR:</p>
+    
+    <!-- Formulario para ingresar la fecha de caducidad y el peso -->
+    <form id="qr-form">
+        <!-- Selector de fecha -->
+        <label for="expiry-date">Fecha de caducidad:</label><br>
+        <input type="date" id="expiry-date"><br><br>
+        
+        <!-- Campo para el peso del producto -->
+        <label for="weight">Peso (en kilos):</label><br>
+        <input type="number" id="weight" step="0.01" placeholder="Escribe el peso..."><br><br>
+        
+        <!-- Botón para generar el QR -->
+        <button type="button" onclick="generateQRCode()">Crear QR</button>
+    </form>
 
     <div id="qrcode-container">
         <div id="qrcode"></div>
@@ -36,18 +48,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
         function generateQRCode() {
-            const text = document.getElementById('input-text').value;
+            // Obtener valores del formulario
+            const expiryDate = document.getElementById('expiry-date').value;
+            const weight = document.getElementById('weight').value;
             const qrCodeContainer = document.getElementById('qrcode');
 
-            qrCodeContainer.innerHTML = ""; 
+            // Limpiar el contenedor del QR anterior
+            qrCodeContainer.innerHTML = "";
 
-            if (text.trim() === "") {
-                alert("Por favor, introduce algún texto o URL.");
+            // Validar que los campos no estén vacíos
+            if (expiryDate.trim() === "" || weight.trim() === "") {
+                alert("Por favor, introduce una fecha de caducidad y el peso del producto.");
                 return;
             }
 
+            // Crear el texto a codificar en el QR (fecha de caducidad y peso)
+            const qrText = `Fecha de caducidad: ${expiryDate}, Peso: ${weight} kg`;
+
+            // Generar el código QR con el texto
             new QRCode(qrCodeContainer, {
-                text: text,
+                text: qrText,
                 width: 200,
                 height: 200,
             });
