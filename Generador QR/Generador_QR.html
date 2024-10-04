@@ -1,69 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Definición del tipo de documento y el idioma. -->
-    <meta charset="UTF-8"> <!-- Codificación de caracteres, en este caso UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hacer que el sitio sea responsive -->
-    <title>Generador de Códigos QR</title> <!-- Título de la página que se verá en la pestaña del navegador -->
-
-    <!-- Estilos CSS para la página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Códigos QR</title>
     <style>
         body {
-            font-family: Arial, sans-serif; /* Fuente del texto */
-            text-align: center; /* Centrar todo el texto en la página */
-            margin-top: 50px; /* Añadir un margen superior de 50px */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
         }
         input {
-            padding: 10px; /* Espacio interior del campo de texto */
-            width: 300px; /* Ancho del campo de entrada */
-            margin-bottom: 20px; /* Espacio debajo del campo de texto */
+            padding: 10px;
+            width: 300px;
+            margin-bottom: 20px;
         }
-        #qrcode {
-            margin-top: 20px; /* Espacio encima del contenedor donde se mostrará el código QR */
+        #qrcode-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Contenido de la página -->
-    <h1>Generador de Códigos QR</h1> <!-- Título principal -->
-    <p>Introduce el texto o URL para generar un código QR:</p> <!-- Instrucciones para el usuario -->
-
-    <!-- Campo de texto donde el usuario ingresa el texto o URL -->
-    <input type="text" id="input-text" placeholder="Escribe algo..."> 
-
-    <!-- Botón que llama a la función para generar el código QR -->
+    <h1>Generador de Códigos QR</h1>
+    <p>Introduce el texto o URL para generar un código QR:</p>
+    <input type="text" id="input-text" placeholder="Escribe algo...">
     <button onclick="generateQRCode()">Generar QR</button>
 
-    <!-- Contenedor donde se insertará el código QR generado -->
-    <div id="qrcode"></div>
+    <div id="qrcode-container">
+        <div id="qrcode"></div>
+    </div>
 
-    <!-- Carga de la librería QRCode.js desde un CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-    <!-- Script JavaScript para generar el código QR -->
     <script>
-        // Función que se ejecuta al hacer clic en el botón "Generar QR"
         function generateQRCode() {
-            // Obtener el valor introducido en el campo de texto
             const text = document.getElementById('input-text').value;
-
-            // Obtener el contenedor donde se mostrará el código QR
             const qrCodeContainer = document.getElementById('qrcode');
 
-            // Limpiar cualquier código QR que ya exista en el contenedor
             qrCodeContainer.innerHTML = ""; 
 
-            // Verificar que el campo de texto no esté vacío
             if (text.trim() === "") {
-                alert("Por favor, introduce algún texto o URL."); // Mostrar una alerta si está vacío
-                return; // Detener la ejecución si no hay texto
+                alert("Por favor, introduce algún texto o URL.");
+                return;
             }
 
-            // Crear un nuevo código QR en el contenedor con las dimensiones especificadas
             new QRCode(qrCodeContainer, {
-                text: text, // El texto o URL que se convertirá en código QR
-                width: 200, // Ancho del código QR
-                height: 200, // Altura del código QR
+                text: text,
+                width: 200,
+                height: 200,
             });
         }
     </script>
