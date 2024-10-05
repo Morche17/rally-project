@@ -1,6 +1,3 @@
-Aquí tienes tu código HTML ajustado para que sea más responsivo. He realizado algunas modificaciones para mejorar la experiencia en dispositivos móviles, asegurando que la disposición de los productos sea más flexible y que los elementos se ajusten a diferentes tamaños de pantalla.
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -63,13 +60,9 @@ Aquí tienes tu código HTML ajustado para que sea más responsivo. He realizado
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 20px;
-            width: calc(33.333% - 20px); /* Ajuste de ancho para tres productos por fila */
+            width: 30%;
+            text-align: center;
             box-sizing: border-box; /* Para que el padding no aumente el tamaño del elemento */
-            transition: transform 0.2s; /* Transición para un efecto suave */
-        }
-
-        .product:hover {
-            transform: scale(1.02); /* Efecto de hover */
         }
 
         .product img {
@@ -167,7 +160,10 @@ Aquí tienes tu código HTML ajustado para que sea más responsivo. He realizado
         /* Responsive Styles */
         @media (max-width: 768px) {
             .product {
-                width: calc(50% - 20px); /* Dos productos por fila en pantallas más pequeñas */
+                width: 45%; /* Dos productos por fila en pantallas más pequeñas */
+            }
+            #cart {
+                width: 200px; /* Ajustar el ancho del carrito en pantallas más pequeñas */
             }
         }
 
@@ -175,10 +171,9 @@ Aquí tienes tu código HTML ajustado para que sea más responsivo. He realizado
             .product {
                 width: 100%; /* Un producto por fila en pantallas muy pequeñas */
             }
-
-            #cart {
-                width: 90%; /* Ancho del carrito en pantallas pequeñas */
-                right: 5%; /* Centrar el carrito en pantallas pequeñas */
+            nav a {
+                float: none; /* Cambia la disposición de los enlaces de navegación */
+                text-align: left; /* Alinea los enlaces a la izquierda */
             }
         }
     </style>
@@ -238,4 +233,525 @@ Aquí tienes tu código HTML ajustado para que sea más responsivo. He realizado
     </div>
 
     <div class="product">
-        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zA
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+    <div class="product">
+        <img src="https://img.freepik.com/foto-gratis/uvas-fresas-pina-kiwi-albaricoque-platano-pina-entera_23-2147968680.jpg" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-frutas-1">
+        <button onclick="addToCart('Frutas Frescas', 10.00, document.getElementById('cantidad-frutas-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnziEKxpbYsCcwsEH0qJz6EL4pVLp6NBYTQ&s" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-verduras-1">
+        <button onclick="addToCart('Verduras Orgánicas', 8.00, document.getElementById('cantidad-verduras-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTxi9mHBYjV33t4koyG07rXEfVT9NmvQSMXw&s" alt="Carnes">
+        <h2>Carnes</h2>
+        <p>$20.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-carnes-1">
+        <button onclick="addToCart('Carnes', 20.00, document.getElementById('cantidad-carnes-1').value)">Agregar al Carrito</button>
+    </div>
+    
+    <div class="product">
+        <img src="https://static5.depositphotos.com/1020804/451/i/450/depositphotos_4518474-stock-photo-photo-of-milk-products.jpg" alt="Lácteos">
+        <h2>Lácteos</h2>
+        <p>$56.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-lacteos-1">
+        <button onclick="addToCart('Lácteos', 56.00, document.getElementById('cantidad-lacteos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/476209536/es/foto/coca-cola-fanta-and-sprite.jpg?s=612x612&w=0&k=20&c=91oGRKhQC5yHmhrGpC88apulUWc-_PQfUTtJDznzgNM=" alt="Refrescos">
+        <h2>Refrescos</h2>
+        <p>$18.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-refrescos-1">
+        <button onclick="addToCart('Refrescos', 18.00, document.getElementById('cantidad-refrescos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+    <div class="product">
+        <img src="https://img.freepik.com/foto-gratis/uvas-fresas-pina-kiwi-albaricoque-platano-pina-entera_23-2147968680.jpg" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-frutas-1">
+        <button onclick="addToCart('Frutas Frescas', 10.00, document.getElementById('cantidad-frutas-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnziEKxpbYsCcwsEH0qJz6EL4pVLp6NBYTQ&s" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-verduras-1">
+        <button onclick="addToCart('Verduras Orgánicas', 8.00, document.getElementById('cantidad-verduras-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTxi9mHBYjV33t4koyG07rXEfVT9NmvQSMXw&s" alt="Carnes">
+        <h2>Carnes</h2>
+        <p>$20.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-carnes-1">
+        <button onclick="addToCart('Carnes', 20.00, document.getElementById('cantidad-carnes-1').value)">Agregar al Carrito</button>
+    </div>
+    
+    <div class="product">
+        <img src="https://static5.depositphotos.com/1020804/451/i/450/depositphotos_4518474-stock-photo-photo-of-milk-products.jpg" alt="Lácteos">
+        <h2>Lácteos</h2>
+        <p>$56.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-lacteos-1">
+        <button onclick="addToCart('Lácteos', 56.00, document.getElementById('cantidad-lacteos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/476209536/es/foto/coca-cola-fanta-and-sprite.jpg?s=612x612&w=0&k=20&c=91oGRKhQC5yHmhrGpC88apulUWc-_PQfUTtJDznzgNM=" alt="Refrescos">
+        <h2>Refrescos</h2>
+        <p>$18.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-refrescos-1">
+        <button onclick="addToCart('Refrescos', 18.00, document.getElementById('cantidad-refrescos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+    <div class="product">
+        <img src="https://img.freepik.com/foto-gratis/uvas-fresas-pina-kiwi-albaricoque-platano-pina-entera_23-2147968680.jpg" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-frutas-1">
+        <button onclick="addToCart('Frutas Frescas', 10.00, document.getElementById('cantidad-frutas-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnziEKxpbYsCcwsEH0qJz6EL4pVLp6NBYTQ&s" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-verduras-1">
+        <button onclick="addToCart('Verduras Orgánicas', 8.00, document.getElementById('cantidad-verduras-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTxi9mHBYjV33t4koyG07rXEfVT9NmvQSMXw&s" alt="Carnes">
+        <h2>Carnes</h2>
+        <p>$20.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-carnes-1">
+        <button onclick="addToCart('Carnes', 20.00, document.getElementById('cantidad-carnes-1').value)">Agregar al Carrito</button>
+    </div>
+    
+    <div class="product">
+        <img src="https://static5.depositphotos.com/1020804/451/i/450/depositphotos_4518474-stock-photo-photo-of-milk-products.jpg" alt="Lácteos">
+        <h2>Lácteos</h2>
+        <p>$56.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-lacteos-1">
+        <button onclick="addToCart('Lácteos', 56.00, document.getElementById('cantidad-lacteos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/476209536/es/foto/coca-cola-fanta-and-sprite.jpg?s=612x612&w=0&k=20&c=91oGRKhQC5yHmhrGpC88apulUWc-_PQfUTtJDznzgNM=" alt="Refrescos">
+        <h2>Refrescos</h2>
+        <p>$18.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-refrescos-1">
+        <button onclick="addToCart('Refrescos', 18.00, document.getElementById('cantidad-refrescos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+    <div class="product">
+        <img src="https://img.freepik.com/foto-gratis/uvas-fresas-pina-kiwi-albaricoque-platano-pina-entera_23-2147968680.jpg" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-frutas-1">
+        <button onclick="addToCart('Frutas Frescas', 10.00, document.getElementById('cantidad-frutas-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnziEKxpbYsCcwsEH0qJz6EL4pVLp6NBYTQ&s" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-verduras-1">
+        <button onclick="addToCart('Verduras Orgánicas', 8.00, document.getElementById('cantidad-verduras-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTxi9mHBYjV33t4koyG07rXEfVT9NmvQSMXw&s" alt="Carnes">
+        <h2>Carnes</h2>
+        <p>$20.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-carnes-1">
+        <button onclick="addToCart('Carnes', 20.00, document.getElementById('cantidad-carnes-1').value)">Agregar al Carrito</button>
+    </div>
+    
+    <div class="product">
+        <img src="https://static5.depositphotos.com/1020804/451/i/450/depositphotos_4518474-stock-photo-photo-of-milk-products.jpg" alt="Lácteos">
+        <h2>Lácteos</h2>
+        <p>$56.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-lacteos-1">
+        <button onclick="addToCart('Lácteos', 56.00, document.getElementById('cantidad-lacteos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/476209536/es/foto/coca-cola-fanta-and-sprite.jpg?s=612x612&w=0&k=20&c=91oGRKhQC5yHmhrGpC88apulUWc-_PQfUTtJDznzgNM=" alt="Refrescos">
+        <h2>Refrescos</h2>
+        <p>$18.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-refrescos-1">
+        <button onclick="addToCart('Refrescos', 18.00, document.getElementById('cantidad-refrescos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+    <div class="product">
+        <img src="https://img.freepik.com/foto-gratis/uvas-fresas-pina-kiwi-albaricoque-platano-pina-entera_23-2147968680.jpg" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-frutas-1">
+        <button onclick="addToCart('Frutas Frescas', 10.00, document.getElementById('cantidad-frutas-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnziEKxpbYsCcwsEH0qJz6EL4pVLp6NBYTQ&s" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-verduras-1">
+        <button onclick="addToCart('Verduras Orgánicas', 8.00, document.getElementById('cantidad-verduras-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTxi9mHBYjV33t4koyG07rXEfVT9NmvQSMXw&s" alt="Carnes">
+        <h2>Carnes</h2>
+        <p>$20.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-carnes-1">
+        <button onclick="addToCart('Carnes', 20.00, document.getElementById('cantidad-carnes-1').value)">Agregar al Carrito</button>
+    </div>
+    
+    <div class="product">
+        <img src="https://static5.depositphotos.com/1020804/451/i/450/depositphotos_4518474-stock-photo-photo-of-milk-products.jpg" alt="Lácteos">
+        <h2>Lácteos</h2>
+        <p>$56.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-lacteos-1">
+        <button onclick="addToCart('Lácteos', 56.00, document.getElementById('cantidad-lacteos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/476209536/es/foto/coca-cola-fanta-and-sprite.jpg?s=612x612&w=0&k=20&c=91oGRKhQC5yHmhrGpC88apulUWc-_PQfUTtJDznzgNM=" alt="Refrescos">
+        <h2>Refrescos</h2>
+        <p>$18.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-refrescos-1">
+        <button onclick="addToCart('Refrescos', 18.00, document.getElementById('cantidad-refrescos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+    <div class="product">
+        <img src="https://img.freepik.com/foto-gratis/uvas-fresas-pina-kiwi-albaricoque-platano-pina-entera_23-2147968680.jpg" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-frutas-1">
+        <button onclick="addToCart('Frutas Frescas', 10.00, document.getElementById('cantidad-frutas-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnziEKxpbYsCcwsEH0qJz6EL4pVLp6NBYTQ&s" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-verduras-1">
+        <button onclick="addToCart('Verduras Orgánicas', 8.00, document.getElementById('cantidad-verduras-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTxi9mHBYjV33t4koyG07rXEfVT9NmvQSMXw&s" alt="Carnes">
+        <h2>Carnes</h2>
+        <p>$20.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-carnes-1">
+        <button onclick="addToCart('Carnes', 20.00, document.getElementById('cantidad-carnes-1').value)">Agregar al Carrito</button>
+    </div>
+    
+    <div class="product">
+        <img src="https://static5.depositphotos.com/1020804/451/i/450/depositphotos_4518474-stock-photo-photo-of-milk-products.jpg" alt="Lácteos">
+        <h2>Lácteos</h2>
+        <p>$56.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-lacteos-1">
+        <button onclick="addToCart('Lácteos', 56.00, document.getElementById('cantidad-lacteos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/476209536/es/foto/coca-cola-fanta-and-sprite.jpg?s=612x612&w=0&k=20&c=91oGRKhQC5yHmhrGpC88apulUWc-_PQfUTtJDznzgNM=" alt="Refrescos">
+        <h2>Refrescos</h2>
+        <p>$18.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-refrescos-1">
+        <button onclick="addToCart('Refrescos', 18.00, document.getElementById('cantidad-refrescos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+    <div class="product">
+        <img src="https://img.freepik.com/foto-gratis/uvas-fresas-pina-kiwi-albaricoque-platano-pina-entera_23-2147968680.jpg" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-frutas-1">
+        <button onclick="addToCart('Frutas Frescas', 10.00, document.getElementById('cantidad-frutas-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnziEKxpbYsCcwsEH0qJz6EL4pVLp6NBYTQ&s" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-verduras-1">
+        <button onclick="addToCart('Verduras Orgánicas', 8.00, document.getElementById('cantidad-verduras-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTxi9mHBYjV33t4koyG07rXEfVT9NmvQSMXw&s" alt="Carnes">
+        <h2>Carnes</h2>
+        <p>$20.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-carnes-1">
+        <button onclick="addToCart('Carnes', 20.00, document.getElementById('cantidad-carnes-1').value)">Agregar al Carrito</button>
+    </div>
+    
+    <div class="product">
+        <img src="https://static5.depositphotos.com/1020804/451/i/450/depositphotos_4518474-stock-photo-photo-of-milk-products.jpg" alt="Lácteos">
+        <h2>Lácteos</h2>
+        <p>$56.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-lacteos-1">
+        <button onclick="addToCart('Lácteos', 56.00, document.getElementById('cantidad-lacteos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/476209536/es/foto/coca-cola-fanta-and-sprite.jpg?s=612x612&w=0&k=20&c=91oGRKhQC5yHmhrGpC88apulUWc-_PQfUTtJDznzgNM=" alt="Refrescos">
+        <h2>Refrescos</h2>
+        <p>$18.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-refrescos-1">
+        <button onclick="addToCart('Refrescos', 18.00, document.getElementById('cantidad-refrescos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+    <div class="product">
+        <img src="https://img.freepik.com/foto-gratis/uvas-fresas-pina-kiwi-albaricoque-platano-pina-entera_23-2147968680.jpg" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-frutas-1">
+        <button onclick="addToCart('Frutas Frescas', 10.00, document.getElementById('cantidad-frutas-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnziEKxpbYsCcwsEH0qJz6EL4pVLp6NBYTQ&s" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-verduras-1">
+        <button onclick="addToCart('Verduras Orgánicas', 8.00, document.getElementById('cantidad-verduras-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTxi9mHBYjV33t4koyG07rXEfVT9NmvQSMXw&s" alt="Carnes">
+        <h2>Carnes</h2>
+        <p>$20.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-carnes-1">
+        <button onclick="addToCart('Carnes', 20.00, document.getElementById('cantidad-carnes-1').value)">Agregar al Carrito</button>
+    </div>
+    
+    <div class="product">
+        <img src="https://static5.depositphotos.com/1020804/451/i/450/depositphotos_4518474-stock-photo-photo-of-milk-products.jpg" alt="Lácteos">
+        <h2>Lácteos</h2>
+        <p>$56.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-lacteos-1">
+        <button onclick="addToCart('Lácteos', 56.00, document.getElementById('cantidad-lacteos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/476209536/es/foto/coca-cola-fanta-and-sprite.jpg?s=612x612&w=0&k=20&c=91oGRKhQC5yHmhrGpC88apulUWc-_PQfUTtJDznzgNM=" alt="Refrescos">
+        <h2>Refrescos</h2>
+        <p>$18.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-refrescos-1">
+        <button onclick="addToCart('Refrescos', 18.00, document.getElementById('cantidad-refrescos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+    <div class="product">
+        <img src="https://img.freepik.com/foto-gratis/uvas-fresas-pina-kiwi-albaricoque-platano-pina-entera_23-2147968680.jpg" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-frutas-1">
+        <button onclick="addToCart('Frutas Frescas', 10.00, document.getElementById('cantidad-frutas-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnziEKxpbYsCcwsEH0qJz6EL4pVLp6NBYTQ&s" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-verduras-1">
+        <button onclick="addToCart('Verduras Orgánicas', 8.00, document.getElementById('cantidad-verduras-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTxi9mHBYjV33t4koyG07rXEfVT9NmvQSMXw&s" alt="Carnes">
+        <h2>Carnes</h2>
+        <p>$20.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-carnes-1">
+        <button onclick="addToCart('Carnes', 20.00, document.getElementById('cantidad-carnes-1').value)">Agregar al Carrito</button>
+    </div>
+    
+    <div class="product">
+        <img src="https://static5.depositphotos.com/1020804/451/i/450/depositphotos_4518474-stock-photo-photo-of-milk-products.jpg" alt="Lácteos">
+        <h2>Lácteos</h2>
+        <p>$56.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-lacteos-1">
+        <button onclick="addToCart('Lácteos', 56.00, document.getElementById('cantidad-lacteos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/476209536/es/foto/coca-cola-fanta-and-sprite.jpg?s=612x612&w=0&k=20&c=91oGRKhQC5yHmhrGpC88apulUWc-_PQfUTtJDznzgNM=" alt="Refrescos">
+        <h2>Refrescos</h2>
+        <p>$18.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-refrescos-1">
+        <button onclick="addToCart('Refrescos', 18.00, document.getElementById('cantidad-refrescos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+    <div class="product">
+        <img src="https://img.freepik.com/foto-gratis/uvas-fresas-pina-kiwi-albaricoque-platano-pina-entera_23-2147968680.jpg" alt="Frutas">
+        <h2>Frutas Frescas</h2>
+        <p>$10.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-frutas-1">
+        <button onclick="addToCart('Frutas Frescas', 10.00, document.getElementById('cantidad-frutas-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlnziEKxpbYsCcwsEH0qJz6EL4pVLp6NBYTQ&s" alt="Verduras">
+        <h2>Verduras Orgánicas</h2>
+        <p>$8.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-verduras-1">
+        <button onclick="addToCart('Verduras Orgánicas', 8.00, document.getElementById('cantidad-verduras-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTxi9mHBYjV33t4koyG07rXEfVT9NmvQSMXw&s" alt="Carnes">
+        <h2>Carnes</h2>
+        <p>$20.00 por kilo</p>
+        <input type="number" min="1" value="1" id="cantidad-carnes-1">
+        <button onclick="addToCart('Carnes', 20.00, document.getElementById('cantidad-carnes-1').value)">Agregar al Carrito</button>
+    </div>
+    
+    <div class="product">
+        <img src="https://static5.depositphotos.com/1020804/451/i/450/depositphotos_4518474-stock-photo-photo-of-milk-products.jpg" alt="Lácteos">
+        <h2>Lácteos</h2>
+        <p>$56.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-lacteos-1">
+        <button onclick="addToCart('Lácteos', 56.00, document.getElementById('cantidad-lacteos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/476209536/es/foto/coca-cola-fanta-and-sprite.jpg?s=612x612&w=0&k=20&c=91oGRKhQC5yHmhrGpC88apulUWc-_PQfUTtJDznzgNM=" alt="Refrescos">
+        <h2>Refrescos</h2>
+        <p>$18.00 por Litro</p>
+        <input type="number" min="1" value="1" id="cantidad-refrescos-1">
+        <button onclick="addToCart('Refrescos', 18.00, document.getElementById('cantidad-refrescos-1').value)">Agregar al Carrito</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.istockphoto.com/id/1163707527/es/foto/fondo-de-surtido-de-panes.jpg?s=612x612&w=0&k=20&c=ld2kdUrZhPDUVLMOtEELhi0zAqIIJA1atTbksBOzN2k=" alt="Panes">
+        <h2>Panes</h2>
+        <p>$5.00 por Pieza</p>
+        <input type="number" min="1" value="1" id="cantidad-panes-1">
+        <button onclick="addToCart('Panes', 5.00, document.getElementById('cantidad-panes-1').value)">Agregar al Carrito</button>
+    </div>
+</div>
+
+<div id="cart">
+    <h2>Carrito</h2>
+    <ul id="cart-items"></ul>
+    <button onclick="checkout()">Comprar</button>
+</div>
+
+<footer>
+    <p>&copy; 2024 Food Link. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    const cart = [];
+
+    function addToCart(item, price, quantity) {
+        const total = price * quantity;
+        const cartItem = { item, price, quantity, total };
+        cart.push(cartItem);
+        displayCart();
+    }
+
+    function displayCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        cartItemsContainer.innerHTML = ''; // Limpia el contenido previo
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.quantity} x ${item.item} - $${item.total.toFixed(2)}`;
+            cartItemsContainer.appendChild(li);
+        });
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            alert('Tu carrito está vacío.');
+            return;
+        }
+
+        const totalAmount = cart.reduce((sum, item) => sum + item.total, 0);
+        alert(`Total a pagar: $${totalAmount.toFixed(2)}`);
+        cart.length = 0; // Vacía el carrito
+        displayCart(); // Actualiza la vista del carrito
+    }
+</script>
+</body>
+</html>
