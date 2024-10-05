@@ -10,6 +10,9 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
@@ -43,10 +46,11 @@
         }
 
         .container {
+            flex: 1; /* Esto hace que el contenedor ocupe todo el espacio disponible */
             width: 80%;
             margin: 20px auto;
             display: flex;
-            justify-content: space-around; /* Cambiado para un espaciado uniforme */
+            justify-content: space-around;
             flex-wrap: wrap;
         }
 
@@ -55,14 +59,14 @@
             border: 1px solid #ddd;
             padding: 20px;
             margin: 20px;
-            width: 250px; /* Ancho fijo para cada opción de menú */
+            width: 250px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
-            transition: transform 0.2s; /* Transición suave al hacer hover */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
         }
 
         .menu-item:hover {
-            transform: scale(1.05); /* Aumentar tamaño al pasar el mouse */
+            transform: scale(1.05);
         }
 
         .menu-item button {
@@ -71,12 +75,12 @@
             color: white;
             border: none;
             cursor: pointer;
-            margin-top: 10px; /* Espaciado superior para el botón */
-            transition: background-color 0.2s; /* Transición suave al cambiar color */
+            margin-top: 10px;
+            transition: background-color 0.2s;
         }
 
         .menu-item button:hover {
-            background-color: #45a049; /* Color más oscuro al pasar el mouse */
+            background-color: #45a049;
         }
 
         footer {
@@ -84,9 +88,7 @@
             padding: 20px;
             background-color: #333;
             color: white;
-            position: fixed;
             width: 100%;
-            bottom: 0;
         }
     </style>
 </head>
@@ -99,8 +101,6 @@
 <nav>
     <a href="home.html">Inicio</a>
     <a href="productos.html">Ver Tienda</a>
-    
-    
 </nav>
 
 <div class="container">
@@ -120,6 +120,12 @@
         <h2>Escanear Código QR</h2>
         <p>Escanea el QR de los productos.</p>
         <a href="../lector_qr/index.html"><button>Escanear</button></a>
+    </div>
+
+    <div class="menu-item">
+        <h2>Escanear Código NFC</h2>
+        <p>Lector NFC</p>
+        <a href="../lector_qr/lectornfc.html"><button>Lector NFC</button></a>
     </div>
 </div>
 
