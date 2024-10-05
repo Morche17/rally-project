@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Ejecutar la consulta
             if ($stmt->execute()) {
                 // Redirigir al index.html después del registro exitoso
-                header("Location: index.html");
+                header("Location: ../index.html");
                 exit();
             } else {
                 echo "Error: " . $stmt->error;
