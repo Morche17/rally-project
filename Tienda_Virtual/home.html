@@ -46,7 +46,7 @@
         }
 
         .container {
-            flex: 1;
+            flex: 1; /* Permite que el contenedor crezca para ocupar el espacio disponible */
             width: 90%;
             max-width: 1200px;
             margin: 20px auto;
@@ -61,11 +61,11 @@
             padding: 20px;
             margin: 10px;
             width: calc(45% - 20px);
-            max-width: 300px; /* Incrementé el ancho máximo */
+            max-width: 300px;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s;
-            border-radius: 8px; /* Añadí bordes redondeados */
+            border-radius: 8px;
         }
 
         .menu-item:hover {
@@ -80,7 +80,7 @@
             cursor: pointer;
             margin-top: 10px;
             transition: background-color 0.2s;
-            border-radius: 5px; /* Bordes redondeados para los botones */
+            border-radius: 5px;
         }
 
         .menu-item button:hover {
@@ -110,16 +110,16 @@
 
         @media (max-width: 480px) {
             header h1 {
-                font-size: 1.5em; /* Tamaño de fuente reducido en pantallas más pequeñas */
+                font-size: 1.5em;
             }
 
             .menu-item {
                 padding: 15px;
-                width: 100%; /* Ocupa el 100% del ancho disponible */
+                width: 100%;
             }
 
             .menu-item button {
-                padding: 10px; /* Tamaño del botón ajustado */
+                padding: 10px;
             }
         }
     </style>
