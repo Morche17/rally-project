@@ -58,7 +58,9 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 300px;
+            width: 100%;
+            max-width: 350px;
+            margin: 20px; /* Ajustar el margen para dispositivos pequeños */
         }
 
         .reader-section h2 {
@@ -113,6 +115,26 @@
             width: 100%;
             bottom: 0;
             font-size: 0.9em;
+        }
+
+        /* Responsividad para pantallas pequeñas */
+        @media (max-width: 600px) {
+            .reader-section {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .reader-section h2 {
+                font-size: 1.3em;
+            }
+
+            .reader-section button {
+                font-size: 0.9em;
+                padding: 10px 20px;
+            }
         }
     </style>
 </head>

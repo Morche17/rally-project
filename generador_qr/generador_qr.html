@@ -43,7 +43,8 @@
         }
 
         .container {
-            width: 300px; /* Ancho reducido para mayor coherencia */
+            width: 90%; /* Ajuste del ancho al 90% */
+            max-width: 400px; /* Máximo ancho para pantallas grandes */
             margin: 20px auto;
             padding: 20px;
             background-color: white;
@@ -54,10 +55,11 @@
 
         input {
             padding: 10px;
-            width: calc(100% - 20px);
+            width: calc(100% - 20px); /* Ajuste de ancho al 100% menos márgenes */
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            box-sizing: border-box;
         }
 
         button {
@@ -87,9 +89,26 @@
             padding: 20px;
             background-color: #333;
             color: white;
-            position: fixed;
             width: 100%;
             bottom: 0;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            nav a {
+                float: none;
+                display: block;
+                text-align: left;
+                padding-left: 20px;
+            }
+
+            .container {
+                width: 95%; /* Ancho casi completo en pantallas pequeñas */
+            }
+
+            input, button {
+                font-size: 1em; /* Aumentar el tamaño de fuente en dispositivos más pequeños */
+            }
         }
     </style>
 </head>

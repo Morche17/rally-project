@@ -11,29 +11,64 @@
             text-align: center;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4; /* Fondo claro para mejor visibilidad */
         }
 
         h1 {
             margin-top: 50px;
         }
 
+        p {
+            margin: 20px 0; /* Espacio adicional alrededor del párrafo */
+        }
+
         .button-container {
             margin-top: 100px;
+            display: flex; /* Usar flexbox para centrar los botones */
+            flex-direction: column; /* Apilar los botones en columnas */
+            align-items: center; /* Centrar horizontalmente */
+            gap: 10px; /* Espacio entre los botones */
         }
 
         button {
             padding: 10px 20px;
             font-size: 16px;
-            margin: 10px;
             border: none;
             background-color: #4CAF50;
             color: white;
             cursor: pointer;
             border-radius: 5px;
+            width: 200px; /* Ancho fijo para los botones */
+            transition: background-color 0.3s; /* Transición suave para el color de fondo */
         }
 
         button:hover {
             background-color: #45a049;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em; /* Ajustar tamaño del encabezado en pantallas más pequeñas */
+            }
+
+            button {
+                width: 80%; /* Botones más anchos en pantallas pequeñas */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2em; /* Tamaño aún más pequeño para pantallas muy pequeñas */
+            }
+
+            p {
+                font-size: 0.9em; /* Tamaño de texto más pequeño */
+            }
+
+            button {
+                font-size: 14px; /* Tamaño de fuente más pequeño para botones */
+            }
         }
     </style>
 </head>

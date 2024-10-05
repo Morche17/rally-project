@@ -46,10 +46,13 @@
         }
 
         .container {
-            width: 80%;
+            width: 100%;
+            max-width: 900px; /* Ajustar para pantallas grandes */
             margin: 20px auto;
             display: flex;
             justify-content: center;
+            flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+            padding: 10px;
         }
 
         .scan-item {
@@ -57,21 +60,24 @@
             border: 1px solid #ddd;
             padding: 20px;
             margin: 20px;
-            width: 300px; /* Ancho fijo para la opción de escanear */
+            width: 100%; /* Ancho del 100% en pantallas pequeñas */
+            max-width: 300px; /* Ancho máximo para pantallas más grandes */
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para efecto de profundidad */
+            flex: 1; /* Flexibilidad para que se adapte mejor */
         }
 
         .scan-item img {
-            width: 175px; /* Ajustar el tamaño de la imagen */
+            width: 100%;
+            max-width: 175px; /* Ajustar el tamaño de la imagen */
             margin: 20px 0;
         }
 
         .button-container {
             display: flex;
-            justify-content: center; /* Centrar los botones */
+            justify-content: center;
             gap: 10px; /* Espacio entre los botones */
-            margin: 15px 0; /* Margen superior e inferior */
+            margin: 15px 0;
         }
 
         footer {
@@ -79,9 +85,22 @@
             padding: 20px;
             background-color: #333;
             color: white;
-            position: fixed;
             width: 100%;
             bottom: 0;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            nav a {
+                float: none;
+                display: block;
+                text-align: left;
+                padding-left: 20px;
+            }
+
+            .scan-item {
+                margin: 10px; /* Ajuste del margen para pantallas más pequeñas */
+            }
         }
     </style>
 </head>
@@ -101,7 +120,7 @@
         <h5>Escanear código QR</h5>
         <div class="text-center">
             <a id="btn-scan-qr" href="#">
-                <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg" class="img-fluid">
+                <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg" class="img-fluid" alt="QR Icon">
             </a>
             <canvas hidden="" id="qr-canvas" class="img-fluid"></canvas>
         </div>
