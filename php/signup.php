@@ -7,15 +7,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validar que los campos no estén vacíos
     if (!empty($username) && !empty($password)) {
-        // Encriptar la contraseña
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        // No encriptar la contraseña, simplemente usarla como texto plano
+        $plain_password = $password; // Guardar la contraseña como texto plano
 
         // Preparar la consulta para insertar el usuario en la base de datos
         $sql = "INSERT INTO usuarios (username, password) VALUES (?, ?)";
 
         if ($stmt = $conn->prepare($sql)) {
             // Vincular los parámetros
-            $stmt->bind_param("ss", $username, $hashed_password);
+            $stmt->bind_param("ss", $username, $plain_password); // Cambiar a $plain_password
 
             // Ejecutar la consulta
             if ($stmt->execute()) {

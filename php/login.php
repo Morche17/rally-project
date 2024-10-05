@@ -14,11 +14,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            $stmt->bind_result($id, $hashed_password);
+            $stmt->bind_result($id, $plain_password); // Cambiar a $plain_password
             $stmt->fetch();
 
-            // Verificar la contraseña
-            if (password_verify($password, $hashed_password)) {
+            // Verificar la contraseña directamente, sin hash
+            if ($password === $plain_password) { // Comparar texto plano
                 $_SESSION['user_id'] = $id;
                 echo 'success';  // Respuesta que indica éxito
             } else {
