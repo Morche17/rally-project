@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lector de tarjetas</title>
+    <style>
+        /* Estilos para el spinner de carga */
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 8px solid #007bff;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+            display: none; /* Se ocultará inicialmente */
+        }
+
+        /* Animación para girar el spinner */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Lector de tarjetas</h1>
+
+    <!-- Botón para iniciar el proceso de carga -->
+    <button type="button" onclick="simulateLoading()">Leer tarjeta</button>
+
+    <!-- Contenedor de la animación de carga -->
+    <div class="loader" id="loader"></div>
+
+    <!-- Contenedor donde se mostraría el resultado -->
+    <div id="content"></div>
+
+    <script>
+        function simulateLoading() {
+            // Mostrar la animación de carga
+            const loader = document.getElementById('loader');
+            loader.style.display = 'block';
+
+            // Simular una operación asincrónica (por ejemplo, una solicitud de red)
+            setTimeout(() => {
+                // Ocultar la animación de carga después de que termine el "proceso"
+                loader.style.display = 'none';
+                
+                // Mostrar el contenido cargado
+                document.getElementById('content').innerHTML = '<p>Datos leidos</p>';
+            }, 3000); // Simula una operación que tarda 3 segundos
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';  // Ocultar la animación de carga después de que termine el "proceso"
+            }, 6000);
+            
+        }
+    </script>
+</body>
+</html>
