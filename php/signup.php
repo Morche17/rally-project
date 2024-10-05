@@ -1,5 +1,5 @@
 <?php
-include 'config.php'; // Archivo de configuración de la base de datos
+include 'connect.php'; // Archivo de configuración de la base de datos
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
